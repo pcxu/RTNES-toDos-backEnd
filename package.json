@@ -1,0 +1,23 @@
+{
+  "name": "rtnes-todos-backend",
+  "version": "1.0.0",
+  "description": "A connection project for a node service",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/app.js"
+  },
+  "author": "pcxu",
+  "license": "ISC",
+  "devDependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2",
+    "webpack-dev-server": "^3.0.0"
+  },
+  "dependencies": {
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.3",
+    "sequelize-cli": "^5.5.1"
+  }
+}
