@@ -8,14 +8,10 @@ rtnes-todos-backend
 </p>  
   
 # 编写意义  
-*R*eact(*T*ypeScript) *N*ode(*E*xpress) *S*equelize  
+**R**eact(**T**ypeScript) **N**ode(*E*xpress) **S**equelize  
 用node完成服务端接口，拥抱大前段时代！  
 
----  
-
 # 食用方式  
-
----  
 
 ## 一.开发依赖 ##
 1.node（建议：使用nvm管理，避免服务端框架不兼容。）  
@@ -27,12 +23,8 @@ rtnes-todos-backend
 7.sequelize + sequelize-cli（作用：ORM框架，协助node操作数据库。）  
 8.body-parser（作用：post类型接口，接受body参数）  
 
----  
-
 ## 二.架构设计 ##  
 【业务代码】express --> 【ORM对象-关系映射】(sequlize) --> 【db驱动】mysql2 --> 【db】mysql  
-
----  
 
 ## 三.准备过程 ##  
 1.准备工程文件夹  
