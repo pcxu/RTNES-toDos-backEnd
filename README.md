@@ -47,4 +47,15 @@ rtnes-todos-backend
 2.1.【GET】【查询】/todo/search?title=标题&time=2020-01-08&content=内容&status=0  
 2.2.【POST】【新增】/todo/create {title='标题', time='2020-01-08', content='内容', status=0 }  
 2.3.【POST】【编辑】/todo/update {id: 0, title='标题', time='2020-01-08', content='内容', status=0 }  
-2.4.【DELETE】【删除】/todo/delete {id: 0 }
+2.4.【DELETE】【删除】/todo/delete {id: 0 }  
+
+# 更新计划  
+*xuGroceryStore*  
+不定期更新中...  
+*webpack4Notes*  
+[传送门](https://github.com/pcxu/webpack4Notes)  
+预计2019年12月底上传，脱离脚手架，搭建webpack+vue的项目，主旨是熟悉webpack使用方式和基础api含义，完成基础版本后，会继续深入webpack的更多有趣特性。  
+*RT-toDoS*  
+[前端传送门](https://github.com/pcxu/RTNES-toDos-backEnd)  
+[服务端传送门](https://github.com/pcxu/RTNES-toDos-backEnd)  
+预计2019年1月底上传，前端React（TypeScript）+服务端Node（Mysql），实现具有增删改查接口的，事件代办列表系统，没错还是用来熟悉TypeScript和Node的。
