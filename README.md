@@ -9,7 +9,7 @@ rtnes-todos-backend
   
 # 编写意义  
 **R**eact(**T**ypeScript) **N**ode(*E*xpress) **S**equelize  
-用node完成服务端接口，拥抱大前段时代！  
+用node完成服务端接口，拥抱大前端时代！  
 
 # 食用方式  
 
