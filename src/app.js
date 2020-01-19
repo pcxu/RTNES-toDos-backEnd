@@ -51,36 +51,46 @@ const models = require('../db/models');
 // 查询
 app.get('/todo/search', async (req, res, next)=>{
     try{
-        let {title='', time='', content='', status=''} = req.query;
+        let {title='', time='', content='', status='', current=0, pageSize=10} = req.query;
+        console.log(current, pageSize);
         let todo = await models.todo.findAndCountAll({
-            where: {
+            where: ( !title && !time && !content && !status )?{}:{
                 [Op.or]: [
-                    {
+                    title!==''?{
                         title: {
                             [Op.like]: `%${title}%`,
                         }, 
-                    },
-                    {
+                    }:null,
+                    time!==''?{
                         time,
-                    },
-                    {
+                    }:null,
+                    content!==''?{
                         content: {
                             [Op.like]: `%${content}%`,
                         }, 
-                    },
-                    {
+                    }:null,
+                    status!==''?{
                         status,
-                    }
+                    }:null,
                 ]
             },
-            limit: 10,
-            offset: 0,
+            limit: Number(pageSize),
+            offset: Number( (current-1)*pageSize ),
             raw:true,
             attributes:["id", "title", "time", "content", "status"],
         });
+
+        let count = await models.todo.findAndCountAll({
+            where: {},
+            raw:true,
+            attributes:["id", "title", "time", "content", "status"],
+        });
+        
+        todo.count = ( !title && !time && !content && !status )?count.rows.length:todo.rows.length;
+
         res.json({
             msg: '查询成功！',
-            todo,
+            body: todo,
             status: 0,
         })
     } catch (error) {
@@ -99,7 +109,7 @@ app.post('/todo/create', async (req, res, next)=>{
         });
         res.json({
             msg: '创建成功！',
-            todo,
+            body: todo,
             status: 0,
         })
     } catch (error) {
@@ -145,7 +155,7 @@ app.post('/todo/update', async (req, res, next)=>{
 
         res.json({
             msg: `${todo?'编辑成功！':'编辑失败！'}`,
-            todo,
+            body: todo,
             status: 0,
         })
     } catch (error) {
@@ -174,7 +184,7 @@ app.delete('/todo/delete', async (req, res, next)=>{
         });
         res.json({
             msg: `${todo?'删除成功！':'删除失败！'}`,
-            todo,
+            body: todo,
             status: 0,
         })
     } catch (error) {
