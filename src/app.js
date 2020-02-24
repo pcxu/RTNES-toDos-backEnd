@@ -51,7 +51,7 @@ const models = require('../db/models');
 // 查询
 app.get('/todo/search', async (req, res, next)=>{
     try{
-        let {title='', time='', content='', status='', current=0, pageSize=10} = req.query;
+        let {title='', time='', content='', status='', current=1, pageSize=5} = req.query;
         console.log(current, pageSize);
         let todo = await models.todo.findAndCountAll({
             where: ( !title && !time && !content && !status )?{}:{
@@ -192,6 +192,27 @@ app.delete('/todo/delete', async (req, res, next)=>{
     }
     
 }); 
+
+// 接受上传文件
+const formidable = require('formidable');
+const fs = require('fs');
+app.post('/upload', function(req,res){
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(error, fields, formData){
+        // console.log( '参数：', formData, '文件名称：', formData.files.name);
+        try{
+            res.json({
+                msg: `上传文件成功`,
+                body: `${formData.files.name}识别结果：“xxx”，时间戳：${units.nowDate()}`,
+                status: 0,
+            })
+        } catch (error) {
+            next(error);
+        }
+
+    })
+});
+  
 
 // 错误信息返回
 app.use( (err, req, res, next)=>{
